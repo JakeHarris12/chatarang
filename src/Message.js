@@ -20,7 +20,7 @@ const Message = (props) => {
     )
 }
 
-const imgUrl = './profilePicture.jpg'
+const imgUrl = 'https://orig00.deviantart.net/747e/f/2013/161/f/5/profile_picture_by_fantastic_frog-d68kdsv.jpg'
 
 const styles = {
     message: {
@@ -33,7 +33,10 @@ const styles = {
         paddingLeft: '0.5rem',
     },
     photo: {
-        background: 'url(' + imgUrl + ')',
+        backgroundImage: 'url(' + imgUrl + ')',
+        backgroundSize: 'cover',
+        width: '40px',
+        height: '40px',
     },
     metadata: {
         display: 'flex',
