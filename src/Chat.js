@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 
 class Chat extends Component {
-    redner(){
+    render(){
         return(
             <div className="Chat">
                 Chat

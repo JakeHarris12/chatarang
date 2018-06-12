@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 
 class Sidebar extends Component {
-    redner(){
+    render(){
         return(
             <div className="Sidebar">
                 Sidebar

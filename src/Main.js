@@ -4,7 +4,7 @@ import Sidebar from './Sidebar'
 import Chat from './Chat'
 
 class Main extends Component {
-    redner(){
+    render(){
         return(
             <div className="Main">
                 <Sidebar />
