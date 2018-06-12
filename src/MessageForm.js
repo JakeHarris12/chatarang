@@ -8,6 +8,7 @@ class MessageForm extends Component {
     handleSubmit = (event) => {
         event.preventDefault()
         this.props.addMessage(this.state.body)
+        this.setState({body: ""})
     }
 
     handleChange = (event) => {
