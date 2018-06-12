@@ -37,6 +37,8 @@ const styles = {
         backgroundSize: 'cover',
         width: '40px',
         height: '40px',
+        fontSize: '1rem',
+        borderRadius: '20px',
     },
     metadata: {
         display: 'flex',
