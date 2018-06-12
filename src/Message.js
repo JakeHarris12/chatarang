@@ -33,7 +33,7 @@ const styles = {
         paddingLeft: '0.5rem',
     },
     photo: {
-        background: 'url(./profilePicture.jpg)',
+        background: 'url(' + imgUrl + ')',
     },
     metadata: {
         display: 'flex',
