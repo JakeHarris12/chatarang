@@ -1,25 +1,36 @@
-import React from 'react'
+import React, { Component }from 'react'
 
-const MessageForm = (props) => {
-
-    const handleSubmit = (event) => {
-        event.preventDefault()
-        props.addMessage()
+class MessageForm extends Component {
+    state = {
+        body: "",
     }
 
-    return(
-        <form 
-            className="MessageForm" 
-            onSubmit={handleSubmit}
-        >
-            <input 
-                type="text" 
-                name="body" 
-                placeholder="Type a message..." 
-            />
-            <button type="submit">Send</button>
-        </form>
-    )
+    handleSubmit = (event) => {
+        event.preventDefault()
+        this.props.addMessage(this.state.body)
+    }
+
+    handleChange = (event) => {
+        this.setState({body: event.target.value})
+    }
+    
+    render() {
+        return(
+            <form 
+                className="MessageForm" 
+                onSubmit={this.handleSubmit}
+            >
+                <input 
+                    type="text" 
+                    name="body" 
+                    placeholder="Type a message..." 
+                    value={this.state.body}
+                    onChange={this.handleChange}
+                />
+                <button type="submit">Send</button>
+            </form>
+        )
+    }
 }
 
 export default MessageForm
