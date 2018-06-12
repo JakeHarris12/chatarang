@@ -8,9 +8,9 @@ const Message = (props) => {
                 style={styles.photo}
             ></div>
             <div className="details" style={styles.messageDetails}>
-                <div className="Metadata">
-                    <div className="user">{props.message.userName}</div>
-                    <div className="time">1:20 PM</div>
+                <div className="Metadata" style={styles.metadata}>
+                    <div className="user" style={styles.user}>{props.message.userName}</div>
+                    <div className="time" style={styles.time}>1:20 PM</div>
                 </div>
                 <div className="body">
                     {props.message.body}
@@ -20,6 +20,7 @@ const Message = (props) => {
     )
 }
 
+const imgUrl = './profilePicture.jpg'
 
 const styles = {
     message: {
@@ -32,7 +33,19 @@ const styles = {
         paddingLeft: '0.5rem',
     },
     photo: {
-        background: 'url(https://api.adorable.io/avatars/32/dana@fretless.com)',
-    }
+        background: 'url(./profilePicture.jpg)',
+    },
+    metadata: {
+        display: 'flex',
+        alignItems: 'baseline',
+    },
+    user: {
+        fontWeight: 'bold',
+        marginRight: '0.5rem',
+    },
+    time: {
+        color: '#999',
+        fontSize: '0.8rem',
+    },
 }
 export default Message
