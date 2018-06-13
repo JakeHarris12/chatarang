@@ -1,24 +1,24 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
-import './App.css';
+import './App.css'
 import Main from './Main'
 
 class App extends Component {
-
   state = {
     user: {
-      uid: 'jakeharris12',
-      userName: 'Jake BOI',
+      uid: '76547',
+      userName: 'maggie',
+      email: 'maggie@aol.com',
     }
   }
 
   render() {
     return (
       <div className="App">
-        <Main user={this.state.user}/>
+        <Main user={this.state.user} />
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
