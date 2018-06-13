@@ -29,6 +29,7 @@ class MessageForm extends Component {
                     type="text" 
                     name="body" 
                     placeholder="Type a message..." 
+                    autoFocus
                     value={this.state.body}
                     onChange={this.handleChange}
                     style={styles.input}
