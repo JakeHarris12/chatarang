@@ -1,19 +1,17 @@
 import React from 'react'
 import { StyleSheet, css } from 'aphrodite'
 
-const RoomList = () => {
+const RoomList = (props) => {
   return (
     <nav
       className={`RoomList ${css(styles.nav)}`}
     >
       <h2 className={css(styles.h2)}>Rooms</h2>
       <ul className={css(styles.list)}>
+        {props.channels.map(channel => 
         <li className={css(styles.item)}>
-          <a href="#" className={css(styles.link)}>general</a>
-        </li>
-        <li className={css(styles.item)}>
-          <a href="#" className={css(styles.link)}>random</a>
-        </li>
+          <a href='#' className={css(styles.link)}>{channel}</a>
+        </li>)}
       </ul>
     </nav>
   )
