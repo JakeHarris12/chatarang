@@ -1,20 +1,19 @@
 import React from 'react'
 
 import Avatar from './Avatar'
+import SignOut from './SignOut'
 
-const UserInfo = (props) => {
+const UserInfo = ({ user }) => {
   return (
     <div
       className="UserInfo"
       style={styles.info}
     >
-      <Avatar user={props.user} style={styles.avatar} />
+      <Avatar user={user} style={styles.avatar} />
       <div className="user" style={styles.user}>
-        {props.user.userName}
+        {user.userName}
       </div>
-      <a href="#">
-        <i className="fas fa-sign-out-alt"></i>
-      </a>
+      <SignOut />
     </div>
   )
 }
