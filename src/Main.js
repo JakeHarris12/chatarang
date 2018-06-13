@@ -13,8 +13,15 @@ class Main extends Component {
     currentChannel: 'general'
   }
 
-  changeChannel(channel){
-    this.setState({currentChannel: channel})
+  changeChannel = (channel) => {
+    const currentChannel = channel
+    this.setState({currentChannel})
+  }
+
+  addChannel = (channel) => {
+    const channels = [...this.state.channels]
+    channels.push(channel)
+    this.setState(channels)
   }
 
   render() {
@@ -25,6 +32,8 @@ class Main extends Component {
           signOut={this.props.signOut} 
           channels={this.state.channels} 
           currentChannel={this.state.currentChannel}
+          changeChannel={this.changeChannel}
+          addChannel={this.addChannel}
         />
         <Chat user={this.props.user} currentChannel={this.state.currentChannel}/>
       </div>

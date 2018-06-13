@@ -16,7 +16,7 @@ class Chat extends Component {
   }
 
   componentWillMount() {
-    base.syncState('general/messages', {
+    base.syncState(`${this.props.currentChannel}/messages`, {
       context: this,
       state: 'messages',
       asArray: true,

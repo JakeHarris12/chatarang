@@ -13,6 +13,7 @@ const RoomList = (props) => {
           <a href='#' className={css(styles.link)}>{channel}</a>
         </li>)}
       </ul>
+      <button className={css(styles.button)}>Add Room</button>
     </nav>
   )
 }
@@ -48,6 +49,22 @@ const styles = StyleSheet.create({
     ':hover': {
       backgroundColor: 'rgba(255, 255, 255, 0.2)',
     }
+  },
+  button: {
+    fontSize: '1.5rem',
+    backgroundColor: '#1A8FE3',
+    color: 'white',
+    paddingLeft: '1rem',
+    paddingRight: '1rem',
+    borderTopRightRadius: '0.5rem',
+    borderBottomRightRadius: '0.5rem',
+    borderTopLeftRadius: '0.5rem',
+    borderBottomLeftRadius: '0.5rem',
+    border: '1px solid white',
+
+    ':hover': {
+      cursor: 'pointer',
+    },
   },
 })
 
