@@ -13,7 +13,7 @@ const RoomList = (props) => {
           <a href='#' onClick={ () => props.changeChannel(channel)} className={css(styles.link)}>{channel}</a>
         </li>)}
       </ul>
-      <button className={css(styles.button)}>Add Room</button>
+      <button onClick={ () => props.addChannel('test')} className={css(styles.button)}>Add Room</button>
     </nav>
   )
 }

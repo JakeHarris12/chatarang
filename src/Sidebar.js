@@ -14,7 +14,7 @@ const Sidebar = (props) => {
         signOut={props.signOut}
       />
       <h1 style={styles.h1}>XTBC 18</h1>
-      <RoomList channels={props.channels} changeChannel={props.changeChannel}/>
+      <RoomList channels={props.channels} changeChannel={props.changeChannel} addChannel={props.addChannel} />
     </aside>
   )
 }
