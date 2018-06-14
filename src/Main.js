@@ -35,7 +35,7 @@ class Main extends Component {
           changeChannel={this.changeChannel}
           addChannel={this.addChannel}
         />
-        <Chat user={this.props.user} currentChannel={this.state.currentChannel}/>
+        <Chat key={this.state.currentChannel} user={this.props.user} currentChannel={this.state.currentChannel}/>
       </div>
     )
   }
