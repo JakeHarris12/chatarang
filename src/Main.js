@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import base from './base'
 
 import Sidebar from './Sidebar'
 import Chat from './Chat'
@@ -15,6 +16,11 @@ class Main extends Component {
 
   changeChannel = (channel) => {
     const currentChannel = channel
+    base.syncState(`${channel}/messages`, {
+      context: this,
+      state: 'messages',
+      asArray: true,
+    })
     this.setState({currentChannel})
   }
 
