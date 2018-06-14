@@ -9,7 +9,6 @@ class Main extends Component {
     channels: [
       'general',
       'random',
-      'test',
     ],
     currentChannel: 'general',
   }
@@ -22,7 +21,7 @@ class Main extends Component {
   addChannel = (channel) => {
     const channels = [...this.state.channels]
     channels.push(channel)
-    this.setState(channels)
+    this.setState({channels})
   }
 
   render() {
