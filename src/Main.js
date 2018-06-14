@@ -16,11 +16,6 @@ class Main extends Component {
 
   changeChannel = (channel) => {
     const currentChannel = channel
-    base.syncState(`${channel}/messages`, {
-      context: this,
-      state: 'messages',
-      asArray: true,
-    })
     this.setState({currentChannel})
   }
 
