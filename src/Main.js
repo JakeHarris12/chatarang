@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import base from './base'
 
 import Sidebar from './Sidebar'
 import Chat from './Chat'
@@ -10,6 +9,7 @@ class Main extends Component {
     channels: [
       'general',
       'random',
+      'test',
     ],
     currentChannel: 'general',
   }
@@ -32,7 +32,6 @@ class Main extends Component {
           user={this.props.user} 
           signOut={this.props.signOut} 
           channels={this.state.channels} 
-          currentChannel={this.state.currentChannel}
           changeChannel={this.changeChannel}
           addChannel={this.addChannel}
         />
