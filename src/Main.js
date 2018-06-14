@@ -11,7 +11,7 @@ class Main extends Component {
       'general',
       'random',
     ],
-    currentChannel: 'general'
+    currentChannel: 'general',
   }
 
   changeChannel = (channel) => {
