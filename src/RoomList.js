@@ -9,11 +9,15 @@ const RoomList = (props) => {
       <h2 className={css(styles.h2)}>Rooms</h2>
       <ul className={css(styles.list)}>
         {props.channels.map(channel => 
-        <li className={css(styles.item)}>
+        <li key={channel} className={css(styles.item)}>
           <a href='#' onClick={ () => props.changeChannel(channel)} className={css(styles.link)}>{channel}</a>
         </li>)}
       </ul>
-      <form onSubmit={(ev) => props.addChannel(ev.target.children[0].value)}>
+      <form onSubmit={(ev) => {
+          props.addChannel(ev.target.children[0].value)
+          ev.target.children[0].value = ''
+        }
+      }>
         <input type='text' placeholder='Enter a channel name...' className={css(styles.input)}/>
         <button type='submit' className={css(styles.button)}>Add Room</button>
       </form>
