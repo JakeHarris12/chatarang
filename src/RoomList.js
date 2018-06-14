@@ -14,7 +14,7 @@ const RoomList = (props) => {
         </li>)}
       </ul>
       <form>
-        <input type='text' placeholder='Enter a channel name...' />
+        <input type='text' placeholder='Enter a channel name...' className={css(styles.input)}/>
         <button type='submit' onSubmit={ (ev) => props.addChannel(ev.target.value)} className={css(styles.button)}>Add Room</button>
       </form>
     </nav>
@@ -64,11 +64,21 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: '0.5rem',
     borderBottomLeftRadius: '0.5rem',
     border: '1px solid white',
+    alignItems: 'center',
 
     ':hover': {
       cursor: 'pointer',
     },
   },
+  input: {
+    backgroundColor: 'white',
+    display: 'flex',
+    alignItems: 'center',
+    border: '2px solid #999',
+    borderRadius: '0.5rem',
+    margin: '0.25rem',
+    padding: 0,
+  }
 })
 
 export default RoomList
