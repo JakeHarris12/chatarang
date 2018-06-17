@@ -1,6 +1,6 @@
 import React from 'react'
 
-import UserInfo from './UserInfo'
+import UserInfo from './Userinfo'
 import RoomList from './RoomList'
 
 const Sidebar = ({ user, signOut, loadRoom }) => {
