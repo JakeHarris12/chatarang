@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { StyleSheet, css } from 'aphrodite'
 
-import { auth, googleProvider, githubProvider } from './base'
+import { auth, googleProvider, githubProvider, facebookProvider } from './base'
 
 class SignIn extends Component {
   state = {
@@ -22,6 +22,8 @@ class SignIn extends Component {
       auth.signInWithPopup(googleProvider)
     }else if(ev.target.id === "github"){
       auth.signInWithPopup(githubProvider)
+    }else if(ev.target.id === "facebook"){
+      auth.signInWithPopup(facebookProvider)
     }else{
       auth.signInWithPopup(googleProvider)
     }
@@ -75,6 +77,15 @@ class SignIn extends Component {
             >
               <i className={`fab fa-github ${css(styles.brandIcon)}`}></i>
               Sign in with Github
+            </button>
+            <button
+              id="facebook"
+              type="button"
+              className={css(styles.button)}
+              onClick={this.authenticate}
+            >
+              <i className={`fab fa-facebook ${css(styles.brandIcon)}`}></i>
+              Sign in with Facebook
             </button>
           </form>
 
