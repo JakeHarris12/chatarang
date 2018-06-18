@@ -59,8 +59,15 @@ class Chat extends Component {
 
   addMessage = (body) => {
     const messages = [...this.state.messages]
+    const now = new Date()
+    let time = 0
+    if(now.getMinutes() > 9){
+      time = now.getMinutes()
+    }else{
+      time = `0${now.getMinutes()}`
+    }
     messages.push({
-      id: Date.now(),
+      id: `${now.getHours()}:${time}`,
       user: this.props.user,
       body,
     })
