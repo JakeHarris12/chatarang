@@ -2,7 +2,7 @@ import React from 'react'
 
 import Message from './Message'
 
-const MessageList = ({ messages, room }) => {
+const MessageList = ({ messages, room, toggleFavMessage }) => {
   return (
     <div className="MessageList" style={styles.list}>
       <div className="roomAnnouncement" style={styles.announcement}>
@@ -12,7 +12,7 @@ const MessageList = ({ messages, room }) => {
         <p>This is the very beginning of the #{room.name} room.</p>
       </div>
       {
-        messages.map(msg => <Message key={msg.id} message={msg} />)
+        messages.map(msg => <Message key={msg.id} message={msg} toggleFavMessage={toggleFavMessage}/>)
       }
     </div>
   )
