@@ -73,7 +73,8 @@ class Chat extends Component {
       hours = `0${now.getHours()}`
     }
     messages.push({
-      id: `${hours}:${minutes}`,
+      id: now,
+      time: `${hours}:${minutes}`,
       user: this.props.user,
       body,
     })
