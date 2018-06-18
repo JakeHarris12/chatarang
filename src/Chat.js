@@ -16,20 +16,6 @@ class Chat extends Component {
     }
   }
 
-  toggleFavMessage = (ev) => {
-    const button = ev.target.closest('.fav')
-    if(button.id === 'off'){
-      button.innerHTML = `<i class="fas fa-heart"></i>`
-      button.setAttribute('id', 'on')
-      button.style.color = 'red'
-    }else{
-      button.innerHTML = `<i class="far fa-heart"></i>`
-      button.setAttribute('id', 'off')
-      button.style.color = 'black'
-    }
-    this.syncMessages()
-  }
-
   componentWillMount() {
     this.syncMessages()
   }
@@ -59,22 +45,8 @@ class Chat extends Component {
 
   addMessage = (body) => {
     const messages = [...this.state.messages]
-    const now = new Date()
-    let minutes = 0
-    if(now.getMinutes() > 9){
-      minutes = now.getMinutes()
-    }else{
-      minutes = `0${now.getMinutes()}`
-    }
-    let hours = 0
-    if(now.getHours > 9){
-      hours = now.getHours()
-    }else{
-      hours = `0${now.getHours()}`
-    }
     messages.push({
-      id: now,
-      time: `${hours}:${minutes}`,
+      id: Date.now(),
       user: this.props.user,
       body,
     })
@@ -89,7 +61,6 @@ class Chat extends Component {
         <MessageList
           messages={this.state.messages}
           room={this.props.room}
-          toggleFavMessage={this.toggleFavMessage}
         />
         <MessageForm addMessage={this.addMessage} />
       </div>
