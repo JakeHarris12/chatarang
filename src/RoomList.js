@@ -59,10 +59,10 @@ class RoomList extends Component {
                 </div>
                 <ul className={css(styles.list)}>
                   {
-                    Object.keys(this.state.rooms).map(roomName => (
+                    Object.keys(this.props.rooms).map(roomName => (
                       <RoomLink
                         key={roomName}
-                        room={this.state.rooms[roomName]}
+                        room={this.props.rooms[roomName]}
                       />
                     ))
                   }

@@ -64,6 +64,14 @@ class Main extends Component {
     this.props.history.push(`/rooms/${realRoomName}`)
   }
 
+  // isMember = (user) => {
+  //   Object.keys(this.state.room).map(roomName => 
+  //     this.state.rooms[roomName].members.map(member => 
+  //       this.props.user === member ? true : false
+  //     )
+  //   )
+  // }
+
   render() {
     return (
       <div className="Main" style={styles}>
@@ -71,6 +79,9 @@ class Main extends Component {
           user={this.props.user}
           signOut={this.props.signOut}
           users={this.props.users}
+          rooms={Object.keys(this.state.rooms)
+            .filter(room => this.state.rooms[room].public === true)
+            .map(room => this.state.rooms[room])}
         />
         <Chat
           user={this.props.user}
