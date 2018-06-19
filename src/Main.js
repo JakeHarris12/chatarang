@@ -64,13 +64,21 @@ class Main extends Component {
     this.props.history.push(`/rooms/${realRoomName}`)
   }
 
-  // isMember = (user) => {
-  //   Object.keys(this.state.room).map(roomName => 
-  //     this.state.rooms[roomName].members.map(member => 
-  //       this.props.user === member ? true : false
-  //     )
-  //   )
-  // }
+  isMember = (room) => {
+    if(this.state.rooms[room].public){
+      return true
+    }else{
+      const results = this.state.rooms[room].members.map(member => 
+        this.props.user.uid === member.value
+      )
+      for(let i = 0; i < results.length; i++){
+        if(results[i] === true){
+          return true
+        }
+      }
+      return false
+    }
+  }
 
   render() {
     return (
@@ -80,7 +88,7 @@ class Main extends Component {
           signOut={this.props.signOut}
           users={this.props.users}
           rooms={Object.keys(this.state.rooms)
-            .filter(room => this.state.rooms[room].public === true)
+            .filter(room => this.isMember(room))
             .map(room => this.state.rooms[room])}
         />
         <Chat
