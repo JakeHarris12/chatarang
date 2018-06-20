@@ -89,7 +89,8 @@ class Main extends Component {
           users={this.props.users}
           rooms={Object.keys(this.state.rooms)
             .filter(room => this.isMember(room))
-            .map(room => this.state.rooms[room])}
+            .map(room => this.state.rooms[room])
+          }
         />
         <Chat
           user={this.props.user}
