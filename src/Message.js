@@ -45,15 +45,19 @@ class Message extends Component {
           <div className="body">
             {message.body}
           </div>
-          <div className="reactions">
+          <div className={css(styles.reactions)}>
             {
               Object.keys(this.state.reactions).map(emojiID => {
                 return  <button
                           key={emojiID}
                           onClick={() => this.inceaseCount(emojiID)}
+                          className={css(styles.emojiButton)}
                         >
                           <Emoji key={emojiID} emoji={emojiID} size={20} />
-                          <p>{this.state.reactions[emojiID]["count"]}</p>
+                          {this.state.reactions[emojiID]["count"] === 1
+                            ? <p></p>
+                            : <p className={css(styles.count)}>{this.state.reactions[emojiID]["count"]}</p> 
+                          }
                         </button>
               })
             }
@@ -111,6 +115,27 @@ const styles = StyleSheet.create({
     ':hover': {
       color: '#3366ff',
     },
+  },
+
+  reactions: {
+    display: 'flex',
+    alignItems: 'row',
+  },
+
+  emojiButton: {
+    height: '1.5rem',
+    width: '2.25rem',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'row',
+    margin: 0.5,
+  },
+
+  count: {
+    fontFamily: 'Raleway, sans-serif',
+    fontWeight: 'bold',
+    height: '1.5rem',
+    margin: 0,
   },
 })
 
