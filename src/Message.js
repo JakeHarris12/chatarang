@@ -134,6 +134,11 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0, 0.1)',
     borderColor: 'rgba(0,0,0, 0.4)',
     cursor: 'pointer',
+
+    ':hover' : {
+      backgroundColor: 'rgba(0,0,0, 0)',
+      borderColor: 'rgba(0,0,0, 0.25)',
+    },
   },
 
   count: {
