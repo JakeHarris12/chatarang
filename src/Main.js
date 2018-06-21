@@ -34,10 +34,32 @@ class Main extends Component {
     }
   }
 
-  loadRoom = (roomName) => {
-    if (roomName === 'new') return null
+  filteredRooms = () => {
+    return this.filteredRoomNames()
+               .map(roomName => this.state.rooms[roomName])
+  }
 
-    const room = this.state.rooms[roomName]
+  filteredRoomNames = () => {
+    return Object.keys(this.state.rooms)
+            .filter(roomName => {
+              const room = this.state.rooms[roomName]
+              if (!room) return false
+              return room.public || this.includesCurrentUser(room)
+            })
+  }
+
+  includesCurrentUser = (room) => {
+    const members = room.members || []
+    return members.find(
+      userOption => userOption.value === this.props.user.uid
+    )
+  }
+
+  loadRoom = (roomName) => {
+    if (roomName === 'new' || roomName === 'new-direct-message') return null
+
+    const room = this.filteredRooms()
+                     .find(room => room.name === roomName)
 
     if (room) {
       this.setState({ room })
@@ -56,28 +78,35 @@ class Main extends Component {
     )
   }
 
+  addRoom = (room) => {
+    const rooms = {...this.state.rooms}
+    const { user } = this.props
+
+    room.displayName = room.name
+
+    if (!room.public) {
+      room.members.push({
+        label: `${user.displayName} (${user.email})`,
+        value: user.uid,
+      })
+    }
+
+    if (room.dm) {
+      const memberNames = room.members.map(member => member.label.split(' ')[0])
+      room.displayName = memberNames.join(', ')
+      room.name = room.members.map(member => member.value).join('-')
+    }
+
+    rooms[room.name] = room
+    this.setState({ rooms })
+  }
+
   loadValidRoom = () => {
-    const realRoomName = Object.keys(this.state.rooms).find(
+    const realRoomName = this.filteredRoomNames().find(
       roomName => this.state.rooms[roomName]
     )
 
     this.props.history.push(`/rooms/${realRoomName}`)
-  }
-
-  isMember = (room) => {
-    if(this.state.rooms[room].public){
-      return true
-    }else{
-      const results = this.state.rooms[room].members.map(member => 
-        this.props.user.uid === member.value
-      )
-      for(let i = 0; i < results.length; i++){
-        if(results[i] === true){
-          return true
-        }
-      }
-      return false
-    }
   }
 
   render() {
@@ -87,10 +116,8 @@ class Main extends Component {
           user={this.props.user}
           signOut={this.props.signOut}
           users={this.props.users}
-          rooms={Object.keys(this.state.rooms)
-            .filter(room => this.isMember(room))
-            .map(room => this.state.rooms[room])
-          }
+          rooms={this.filteredRooms()}
+          addRoom={this.addRoom}
         />
         <Chat
           user={this.props.user}
