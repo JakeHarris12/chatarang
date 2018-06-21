@@ -18,9 +18,20 @@ class Message extends Component {
 
   handleEmojiSelect = (emoji) => {
     const reactions = {...this.state.reactions}
-    reactions[emoji.id] = emoji
+    if(reactions[emoji.id] === undefined){
+      reactions[emoji.id] = emoji
+      reactions[emoji.id]["count"] = 1
+    }else{
+      reactions[emoji.id]["count"]++
+    }
     this.state.reactions = reactions
     this.togglePicker()
+  }
+
+  inceaseCount = (emojiID) => {
+    const reactions = {...this.state.reactions}
+    reactions[emojiID]["count"]++
+    this.setState({ reactions })
   }
 
   render() {
@@ -33,6 +44,19 @@ class Message extends Component {
           <Metadata message={message} />
           <div className="body">
             {message.body}
+          </div>
+          <div className="reactions">
+            {
+              Object.keys(this.state.reactions).map(emojiID => {
+                return  <button
+                          key={emojiID}
+                          onClick={() => this.inceaseCount(emojiID)}
+                        >
+                          <Emoji key={emojiID} emoji={emojiID} size={20} />
+                          <p>{this.state.reactions[emojiID]["count"]}</p>
+                        </button>
+              })
+            }
           </div>
           <button
             className={`reactionButton ${css(styles.reactionButton)}`}
@@ -49,13 +73,6 @@ class Message extends Component {
               onSelect={this.handleEmojiSelect}
             />
         }
-        <div className="reactions">
-          {
-            Object.keys(this.state.reactions).map(emojiID => {
-             return <Emoji key={emojiID} emoji={emojiID} size={12} />
-            })
-          }
-        </div>
       </div>
     )
   }
