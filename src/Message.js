@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { StyleSheet, css } from 'aphrodite'
 import 'emoji-mart/css/emoji-mart.css'
-import { Picker } from 'emoji-mart'
+import { Picker, Emoji } from 'emoji-mart'
 
 import Avatar from './Avatar'
 import Metadata from './Metadata'
@@ -9,6 +9,7 @@ import Metadata from './Metadata'
 class Message extends Component {
   state = {
     showPicker: false,
+    reactions:{},
   }
 
   togglePicker = () => {
@@ -16,7 +17,9 @@ class Message extends Component {
   }
 
   handleEmojiSelect = (emoji) => {
-    console.log(emoji)
+    const reactions = {...this.state.reactions}
+    reactions[emoji.id] = emoji
+    this.state.reactions = reactions
     this.togglePicker()
   }
 
@@ -46,6 +49,13 @@ class Message extends Component {
               onSelect={this.handleEmojiSelect}
             />
         }
+        <div className="reactions">
+          {
+            Object.keys(this.state.reactions).map(emojiID => {
+             return <Emoji key={emojiID} emoji={emojiID} size={12} />
+            })
+          }
+        </div>
       </div>
     )
   }
