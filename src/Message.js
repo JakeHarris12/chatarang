@@ -124,11 +124,11 @@ const styles = StyleSheet.create({
 
   emojiButton: {
     height: '1.5rem',
-    width: '2.25rem',
+    width: 'auto',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'row',
-    margin: 0.5,
+    margin: 1,
     borderWidth: '2px',
     borderRadius: '0.5rem',
     backgroundColor: 'rgba(0,0,0, 0.1)',
