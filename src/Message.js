@@ -129,6 +129,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'row',
     margin: 0.5,
+    borderWidth: '2px',
+    borderRadius: '0.5rem',
+    backgroundColor: 'rgba(0,0,0, 0.1)',
+    borderColor: 'rgba(0,0,0, 0.4)',
+    cursor: 'pointer',
   },
 
   count: {
